@@ -1,6 +1,10 @@
 package org.alekhanov.bitrixgrambot;
 
 import org.telegram.telegrambots.bots;
+import org.telegram.telegrambots.api.methods.send.SendMessage;
+import org.telegram.telegrambots.api.objects.Update;
+import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.exceptions.TelegramApiException;
 
 public static void main(String[]args){
         ApiContextInitializer.init();
@@ -13,6 +17,7 @@ public static void main(String[]args){
         }
 
 public class Bot extends TelegramLongPollingBot {
+
     @Override
     public void onUpdateReceived(Update update) {
         String message = update.getMessage().getText();
