@@ -1,20 +1,10 @@
-package org.alekhanov.bitrixgrambot;
+package alekhanov;
 
-import org.telegram.telegrambots.bots;
-import org.telegram.telegrambots.api.methods.send.SendMessage;
-import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.exceptions.TelegramApiException;
-
-public static void main(String[]args){
-        ApiContextInitializer.init();
-        TelegramBotApi telegramBotApi=new TelegramBotApi();
-        try{
-        telegramBotApi.registerBot(Bot.getBot());
-        }catch(TelegramApiRequestException e){
-        e.printStackTrace();
-        }
-        }
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
 public class Bot extends TelegramLongPollingBot {
 
@@ -44,5 +34,15 @@ public class Bot extends TelegramLongPollingBot {
     @Override
     public String getBotToken() {
         return "5039191030:AAGGC3hIg3VB-yEe7ioYECPgrroe8FMNBWs";
+    }
+
+    public static void main(String[] args) {
+        ApiContextInitializer.init();
+        TelegramBotApi telegramBotApi = new TelegramBotApi();
+        try {
+            telegramBotApi.registerBot(Bot.getBot());
+        } catch (TelegramApiRequestException e) {
+            e.printStackTrace();
+        }
     }
 }
