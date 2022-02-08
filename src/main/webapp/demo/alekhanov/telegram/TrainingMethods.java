@@ -12,14 +12,14 @@ import java.util.List;
 import static java.lang.String.valueOf;
 
 public class TrainingMethods {
-    public static SendMessage sendHelpMessage(long chatId) {
+    protected static SendMessage sendHelpMessage(long chatId) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(valueOf(chatId));
         sendMessage.setText("Пример");
         return sendMessage;
     }
 
-    public static SendPhoto sendLandspacePhoto(long chatId) {
+    protected static SendPhoto sendLandspacePhoto(long chatId) {
         InputFile file = new InputFile("https://sun9-68.userapi.com/kkE70h-FsBX4AKJxE4wKm0iug8jYHxx97v4u_Q/OKIOERhgTR4.jpg");
         SendPhoto sendPhoto = new SendPhoto();
         sendPhoto.setChatId(valueOf(chatId));
@@ -27,7 +27,7 @@ public class TrainingMethods {
         return sendPhoto;
     }
 
-    public static SendMessage sendInlineKeyBoardMessage(long chatId) {
+    protected static SendMessage sendInlineKeyBoardMessage(long chatId) {
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
         InlineKeyboardButton inlineKeyboardButton1 = new InlineKeyboardButton();
         InlineKeyboardButton inlineKeyboardButton2 = new InlineKeyboardButton();
