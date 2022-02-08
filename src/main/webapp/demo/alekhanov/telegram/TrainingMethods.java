@@ -1,64 +1,17 @@
-package alekhanov;
+package alekhanov.telegram;
 
-import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.methods.AnswerInlineQuery;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
-import org.telegram.telegrambots.meta.api.methods.send.SendSticker;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
-import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.inlinequery.inputmessagecontent.InputTextMessageContent;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import static java.lang.String.*;
+import static java.lang.String.valueOf;
 
-public class Bot extends TelegramLongPollingBot {
-
-    @Override
-    public void onUpdateReceived(Update update) {
-        try {
-            execute(sh);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
-        }
-        if (update.hasMessage()) {
-            SendMessage message = new SendMessage();
-            message.setChatId(update.getMessage().getChatId().toString());
-            message.setText(update.getMessage().getText());
-            if (update.getMessage().getText().toLowerCase().equals("/помощь")) {
-                try {
-                    execute(sendHelpMessage(update.getMessage().getChatId()));
-                } catch (TelegramApiException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (update.getMessage().getText().toLowerCase().equals("/картинка_поля")) {
-                try {
-                    execute(sendLandspacePhoto(update.getMessage().getChatId()));
-                } catch (TelegramApiException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (update.getMessage().getText().toLowerCase().equals("/кнопки")) {
-                try {
-                    execute(sendInlineKeyBoardMessage(update.getMessage().getChatId()));
-                } catch (TelegramApiException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
+public class TrainingMethods {
     public static SendMessage sendHelpMessage(long chatId) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(valueOf(chatId));
@@ -99,15 +52,5 @@ public class Bot extends TelegramLongPollingBot {
         sendMessage.setText("Пример");
         sendMessage.setReplyMarkup(inlineKeyboardMarkup);
         return sendMessage;
-    }
-
-    @Override
-    public String getBotUsername() {
-        return "BitrixSync";
-    }
-
-    @Override
-    public String getBotToken() {
-        return "5039191030:AAGGC3hIg3VB-yEe7ioYECPgrroe8FMNBWs";
     }
 }
