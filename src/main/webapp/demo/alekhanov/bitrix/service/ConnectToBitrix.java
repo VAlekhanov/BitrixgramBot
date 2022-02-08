@@ -1,4 +1,4 @@
-package alekhanov.bitrix;
+package alekhanov.bitrix.service;
 
 public class ConnectToBitrix {
 }
